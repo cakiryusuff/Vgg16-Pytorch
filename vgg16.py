@@ -35,7 +35,7 @@ class Vgg16(nn.Module):
 
     def layer(self, in_planes, out_planes):
       blocks = nn.Sequential(
-          nn.Conv2d(in_planes, out_planes, kernel_size = 3, padding = 1),
+          nn.Conv2d(in_planes, out_planes, kernel_size = 3, padding = 1, bias = False),
           nn.ReLU(inplace = True),
           nn.BatchNorm2d(out_planes))
       return blocks

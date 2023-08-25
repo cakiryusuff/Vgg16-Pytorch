@@ -27,10 +27,10 @@ class Vgg16(nn.Module):
 
     def _make_layer(self, planes):
       layers = []
-      for i,_ in enumerate(planes[:13]):
+      for i in range(len(self.planes) - 1):
           layers.append(self.layer(planes[i], planes[i + 1]))
           if i in [1, 3, 6, 9, 12]:
-            layers.append(nn.Sequential(nn.MaxPool2d(2, 2)))
+            layers.append(nn.MaxPool2d(2, 2))
       return (nn.Sequential(*layers))
 
     def layer(self, in_planes, out_planes):

@@ -8,7 +8,7 @@ Created on Thu Aug 24 17:37:24 2023
 import torch.nn as nn
 
 class Vgg16(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes = 1000):
       super(Vgg16, self).__init__()
       self.planes = [3, 64, 64, 128, 128, 256, 256, 256, 512, 512, 512, 512, 512, 512]
 
@@ -44,4 +44,5 @@ class Vgg16(nn.Module):
       x = self.avgPool(self.network(x))
       x = x.view(x.size()[0], -1)
       x = self.fc(x)
+      x = nn.functional.softmax(x, dim = 1)
       return x

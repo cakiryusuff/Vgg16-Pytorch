@@ -11,7 +11,7 @@ from torchvision.ops import Conv2dNormActivation
 class Vgg16(nn.Module):
     def __init__(self, num_classes = 1000):
       super(Vgg16, self).__init__()
-      self.planes = [3, 64, 64, 128, 128, 256, 256, 256, 256, 512, 512, 512, 512, 512]
+      self.planes = [3, 64, 64, 128, 128, 256, 256, 256, 512, 512, 512, 512, 512, 512]
 
       self.network = self._make_layer(self.planes)
       self.avgPool = nn.AdaptiveAvgPool2d(output_size=(7, 7))
